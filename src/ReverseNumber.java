@@ -1,16 +1,7 @@
 import java.util.*;
 public class ReverseNumber {
-    public static void main(String[] args) {
-        Scanner sc=new Scanner(System.in);
-        int n;
-        System.out.println("Reverse Number");
-        System.out.print("Enter a number: ");
-        n=sc.nextInt();
-        System.out.println(revNum1(n));
-        System.out.println(revNum2(n));
-        System.out.println(revNum3(n));
-    }
-    private static int revNum1(int n){    //time: O(digits) or O(logn)   space: O(1)
+    // Using %   ( Optimal )
+    private static int revNum1(int n){       // Time: O(digits) or O(logn)   Space: O(1)
         int temp=n,rev=0;
         while(temp>0){
             int d=temp%10;
@@ -19,12 +10,12 @@ public class ReverseNumber {
         }
         return rev;
     }
-
-    private static int revNum2(int n){         //time: O(digits) or O(logn)   space: O(d)
+    // Using StringBuilder built-in func
+    private static int revNum2(int n){        // Time: O(digits) or O(logn)   Space: O(d)
         return Integer.parseInt(new StringBuilder(String.valueOf(n)).reverse().toString());
     }
-
-    private static int revNum3(int n){       //time: O(digits) or O(logn)   space: O(d)
+    // Using Stack
+    private static int revNum3(int n){        // Time: O(digits) or O(logn)   Space: O(d)
         Stack<Integer> stack=new Stack<>();
         while(n>0){
             stack.push(n%10);
@@ -36,6 +27,17 @@ public class ReverseNumber {
             i = i * 10;
         }
         return rev;
+    }
+    // Main function
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n;
+        System.out.println("Reverse Number");
+        System.out.print("Enter a number: ");
+        n=sc.nextInt();
+        System.out.println(revNum1(n));
+        System.out.println(revNum2(n));
+        System.out.println(revNum3(n));
     }
 }
 

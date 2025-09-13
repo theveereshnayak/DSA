@@ -1,18 +1,9 @@
 import java.util.Scanner;
 public class Armstrong {
-    public static void main(String[] args) {
-        Scanner sc=new Scanner(System.in);
-        int n;
-        System.out.println("Armstrong check");
-        System.out.print("Enter a number: ");
-        n=sc.nextInt();
-        System.out.println(arm1(n));
-        System.out.println(arm2(n));
-    }
-
-    private static boolean arm1(int n){        //time: O(digits) or O(logn)   space: O(1)
+    // Using %   ( Optimal )
+    private static boolean arm1(int n){        // Time: O(digits) or O(logn)   Space: O(1)
         int temp=n,sum=0,len=0;
-        while(temp>0){       //len=(int)Math.log10(num)+1;
+        while(temp>0){       // len=(int)Math.log10(num)+1;
             len++;
             temp/=10;
         }
@@ -24,8 +15,8 @@ public class Armstrong {
         }
         return sum==n;
     }
-
-    private static boolean arm2(int n){       //time: O(digits) or O(logn)   space: O(digits)
+    // Using String conversion
+    private static boolean arm2(int n){       // Time: O(digits) or O(logn)   Space: O(digits)
         String s=String.valueOf(n);
         int len=s.length();
         int sum=0;
@@ -34,5 +25,15 @@ public class Armstrong {
             sum+=(int)Math.pow(digit,len);
         }
         return sum==n;
+    }
+    // Main function
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n;
+        System.out.println("Armstrong check");
+        System.out.print("Enter a number: ");
+        n=sc.nextInt();
+        System.out.println(arm1(n));
+        System.out.println(arm2(n));
     }
 }
